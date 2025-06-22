@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  db:
+      container_name: zoss_mysql
+      image: mysql:8.0
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: zoss_test
+        MYSQL_ROOT_HOST: '%'
+      ports:
+        - "3307:3306"
+      volumes:
+        - db_data:/var/lib/mysql
+
   api:
     container_name: zoss_api
     build:
@@ -14,19 +27,6 @@ services:
       - ConnectionStrings__DefaultConnection=Server=db;Port=3306;Database=zoss_test;User Id=root;Password=root;
     depends_on:
       - db
-
-  db:
-    container_name: zoss_mysql
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: zoss_test
-      MYSQL_ROOT_HOST: '%'
-    ports:
-      - "3307:3306"
-    volumes:
-      - db_data:/var/lib/mysql
 
 volumes:
   db_data:
