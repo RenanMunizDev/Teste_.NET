@@ -28,7 +28,6 @@ Thumbs.db
 
 # ---- Environment configs ----
 # Para não subir secrets locais:
-appsettings.Development.json
 appsettings.Production.json
 secrets.json
 
