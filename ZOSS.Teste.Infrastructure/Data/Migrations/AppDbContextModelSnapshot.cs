@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ZOSS.Teste.Back.Data;
+using ZOSS.Teste.Infrastructure.Data;
 
 #nullable disable
 
-namespace ZOSS.Teste.Back.Migrations
+namespace ZOSS.Teste.Infrastructure.Data
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot

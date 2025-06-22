@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ZOSS.Teste.Application.Interfaces;
-using ZOSS.Teste.Back.Models;
+using ZOSS.Teste.API.Models;
+using ZOSS.Teste.Application.Interfaces; 
 
-namespace ZOSS.Teste.Back.Controllers
+namespace ZOSS.Teste.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ZOSS.Teste.Back.Data;
-using ZOSS.Teste.Back.DTOs;
-using ZOSS.Teste.Back.Models;
+using ZOSS.Teste.Infrastructure.Data;
+using ZOSS.Teste.Domain.Entities;
+using ZOSS.Teste.API.DTOs;
 
 namespace ZOSS.Teste.Back.Controllers
 {

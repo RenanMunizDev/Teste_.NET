@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ZOSS.Teste.Back.Models
+namespace ZOSS.Teste.Domain.Entities
 {
     public class Product
     {

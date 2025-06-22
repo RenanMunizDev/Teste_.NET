@@ -1,4 +1,4 @@
-﻿namespace ZOSS.Teste.Back.DTOs
+﻿namespace ZOSS.Teste.API.DTOs
 {
     public class ProductResponseDTO
     {

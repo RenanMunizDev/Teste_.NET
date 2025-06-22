@@ -1,4 +1,4 @@
-﻿namespace ZOSS.Teste.Back.Models
+﻿namespace ZOSS.Teste.API.Models
 {
     public class ProductRequestDTO
     {

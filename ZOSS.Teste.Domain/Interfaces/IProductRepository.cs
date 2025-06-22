@@ -1,4 +1,4 @@
-﻿using ZOSS.Teste.Back.Models;
+﻿using ZOSS.Teste.Domain.Entities;
 
 namespace ZOSS.Teste.Domain.Interfaces
 {

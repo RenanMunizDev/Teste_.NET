@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZOSS.Teste.Back", "ZOSS.Teste.Back.csproj", "{0D469916-963B-459B-9E69-B4114BFB6578}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZOSS.Teste.API", "ZOSS.Teste.API.csproj", "{0D469916-963B-459B-9E69-B4114BFB6578}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZOSS.Teste.Domain", "..\ZOSS.Teste.Domain\ZOSS.Teste.Domain.csproj", "{62035FB9-F2F0-4E3F-B649-5DF2917C6DBF}"
 EndProject

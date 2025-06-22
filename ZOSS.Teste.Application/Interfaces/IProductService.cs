@@ -1,5 +1,5 @@
-﻿using ZOSS.Teste.Back.DTOs;
-using ZOSS.Teste.Back.Models;
+﻿using ZOSS.Teste.API.DTOs;
+using ZOSS.Teste.API.Models;
 
 namespace ZOSS.Teste.Application.Interfaces
 {

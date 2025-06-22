@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ZOSS.Teste.Back.Data;
-using ZOSS.Teste.Back.Models;
+using ZOSS.Teste.Infrastructure.Data;
 using ZOSS.Teste.Domain.Interfaces;
+using ZOSS.Teste.Domain.Entities;
 
 namespace ZOSS.Teste.Infrastructure.Repositories
 {

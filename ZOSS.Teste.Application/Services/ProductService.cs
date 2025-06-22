@@ -1,6 +1,7 @@
-﻿using ZOSS.Teste.Application.Interfaces;
-using ZOSS.Teste.Back.DTOs;
-using ZOSS.Teste.Back.Models;
+﻿using ZOSS.Teste.API.DTOs;
+using ZOSS.Teste.API.Models;
+using ZOSS.Teste.Application.Interfaces;
+using ZOSS.Teste.Domain.Entities;
 using ZOSS.Teste.Domain.Interfaces;
 
 namespace ZOSS.Teste.Application.Services

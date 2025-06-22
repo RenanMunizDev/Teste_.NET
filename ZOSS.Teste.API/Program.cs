@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 using System.Globalization;
 using ZOSS.Teste.Application.Interfaces;
 using ZOSS.Teste.Application.Services;
-using ZOSS.Teste.Back.Data;
+using ZOSS.Teste.Infrastructure.Data;
 using ZOSS.Teste.Domain.Interfaces;
 using ZOSS.Teste.Infrastructure.Repositories;
 

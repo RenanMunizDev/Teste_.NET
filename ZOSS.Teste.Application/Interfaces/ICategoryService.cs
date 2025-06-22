@@ -1,4 +1,4 @@
-﻿using ZOSS.Teste.Back.DTOs;
+﻿using ZOSS.Teste.API.DTOs;
 
 namespace ZOSS.Teste.Application.Interfaces
 {

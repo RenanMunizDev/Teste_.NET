@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ZOSS.Teste.Back.Models;
+using ZOSS.Teste.Domain.Entities;
 
-namespace ZOSS.Teste.Back.Data
+namespace ZOSS.Teste.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {

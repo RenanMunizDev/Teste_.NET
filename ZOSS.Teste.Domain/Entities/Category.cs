@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ZOSS.Teste.Back.Models
+namespace ZOSS.Teste.Domain.Entities
 {
     public class Category
     {
