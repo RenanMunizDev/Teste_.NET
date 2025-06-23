@@ -7,5 +7,6 @@ namespace ZOSS.Teste.Application.Interfaces
         Task<IEnumerable<CategoryResponseDTO?>> GetAllAsync();
         Task<CategoryResponseDTO?> GetByIdAsync(int id);
         Task<CategoryResponseDTO?> CreateAsync(CategoryRequestDTO categoryDto);
+        Task<bool> DeleteAsync(int id);
     }
 }

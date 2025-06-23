@@ -39,14 +39,13 @@ namespace ZOSS.Teste.Application.Services
             return new CategoryResponseDTO { Id = category.Id, Name = category.Name };
         }
 
-        Task<IEnumerable<CategoryResponseDTO?>> ICategoryService.GetAllAsync()
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
-        }
+            var hasProducts = await _categoryRepository.HasProductsAsync(id);
+            if (hasProducts)
+                return false;
 
-        Task<CategoryResponseDTO?> ICategoryService.GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+            return await _categoryRepository.DeleteAsync(id);
         }
     }
 }

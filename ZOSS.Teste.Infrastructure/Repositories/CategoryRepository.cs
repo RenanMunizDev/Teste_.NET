@@ -29,5 +29,20 @@ namespace ZOSS.Teste.Infrastructure.Repositories
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> HasProductsAsync(int categoryId)
+        {
+            return await _context.Products.AnyAsync(p => p.CategoryId == categoryId);
+        }
+
+        public async Task<bool> DeleteAsync(int categoryId)
+        {
+            var category = await _context.Categories.FindAsync(categoryId);
+            if (category == null) return false;
+
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

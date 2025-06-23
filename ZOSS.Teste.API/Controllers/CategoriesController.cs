@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ZOSS.Teste.Infrastructure.Data;
-using ZOSS.Teste.Domain.Entities;
 using ZOSS.Teste.API.DTOs;
+using ZOSS.Teste.Application.Interfaces;
 
-namespace ZOSS.Teste.Back.Controllers
+namespace ZOSS.Teste.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class CategoriesController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ICategoryService _categoryService;
 
-        public CategoriesController(AppDbContext context)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
         }
 
         [HttpPost]
@@ -23,58 +21,40 @@ namespace ZOSS.Teste.Back.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var category = new Category
-            {
-                Name = categoryDTO.Name
-            };
+            var createdCategory = await _categoryService.CreateAsync(categoryDTO);
 
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
+            if (createdCategory == null)
+                return BadRequest("Falha ao criar categoria.");
 
-            var responseDTO = new CategoryResponseDTO
-            {
-                Id = category.Id,
-                Name = category.Name
-            };
-
-            return CreatedAtAction(nameof(GetCategories), new { id = category.Id }, responseDTO);
+            return CreatedAtAction(nameof(GetCategoryById), new { id = createdCategory.Id }, createdCategory);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetCategories()
         {
-            var categories = await _context.Categories
-                .Select(c => new CategoryResponseDTO
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
-                .ToListAsync();
-
+            var categories = await _categoryService.GetAllAsync();
             return Ok(categories);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            var category = await _categoryService.GetByIdAsync(id);
+            if (category == null)
+                return NotFound();
+
+            return Ok(category);
+        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
+            var deleted = await _categoryService.DeleteAsync(id);
 
-            var hasProducts = await _context.Products.AnyAsync(p => p.CategoryId == id);
-            if (hasProducts)
-            {
-                return BadRequest("Não é possível deletar uma categoria com produtos vinculados.");
-            }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
+            if (!deleted)
+                return BadRequest("Não é possível deletar categoria inexistente ou com produtos vinculados.");
 
             return NoContent();
         }
-
     }
 }
