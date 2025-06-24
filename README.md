@@ -1,8 +1,11 @@
+
 # 🚀 Teste Técnico - API .NET 9
+
+![CI/CD](https://github.com/RenanMunizDev/Teste_.NET/actions/workflows/ci.yml/badge.svg)
 
 Olá recrutador(a)! 👋
 
-Este repositório apresenta o desenvolvimento de um **teste técnico** para a vaga de **Desenvolvedor(a) .NET**, demonstrando domínio de **boas práticas**, **Clean Architecture**, separação clara por camadas, uso de **Entity Framework Core**, **MySQL**, **Swagger** e **Docker** para garantir fácil execução e escalabilidade.
+Este repositório apresenta o desenvolvimento de um **teste técnico** para a vaga de **Desenvolvedor(a) .NET**, demonstrando domínio de **boas práticas**, **Clean Architecture**, separação clara por camadas, uso de **Entity Framework Core**, **MySQL**, **Swagger**, **Docker** e pipeline **CI/CD** com **GitHub Actions** para build, testes e publicação automática da imagem no **Docker Hub**.
 
 ---
 
@@ -17,6 +20,7 @@ Funcionalidades implementadas:
 - ✅ Validações de entrada (DTOs)
 - ✅ Documentação interativa via Swagger
 - ✅ Orquestração via Docker Compose
+- ✅ Pipeline CI/CD automatizado (build, testes e push da imagem Docker)
 
 ---
 
@@ -39,6 +43,7 @@ Funcionalidades implementadas:
 - [MySQL](https://www.mysql.com/)
 - [Swagger / Swashbuckle](https://swagger.io/)
 - [Docker](https://www.docker.com/)
+- [GitHub Actions](https://github.com/features/actions)
 
 ---
 
@@ -82,6 +87,15 @@ Principais endpoints:
 
 ---
 
+## 🚀 CI/CD - Pipeline Automatizado
+
+Este repositório possui pipeline **CI/CD** configurado com **GitHub Actions**, que realiza automaticamente:
+- Build e testes do projeto .NET
+- Build da imagem Docker usando o Dockerfile
+- Push automático da imagem para o **[Docker Hub](https://hub.docker.com/repository/docker/renanmunizdev/teste-net-api/general)**
+
+---
+
 ## ✅ Boas Práticas Aplicadas
 
 - Padrão **DDD simplificado** com camadas **Domain**, **Application**, **Infrastructure** e **API**
@@ -90,6 +104,7 @@ Principais endpoints:
 - Separação de DTOs para **Request** e **Response**
 - Versionamento de banco com **Migrations EF Core**
 - **Docker Compose** para ambiente isolado
+- **GitHub Actions** para pipeline CI/CD robusto e automatizado
 
 ---
 
