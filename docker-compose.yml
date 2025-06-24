@@ -11,6 +11,11 @@ services:
         MYSQL_ROOT_HOST: '%'
       ports:
         - "3307:3306"
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
       volumes:
         - db_data:/var/lib/mysql
 
@@ -24,7 +29,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=db;Port=3306;Database=zoss_test;User Id=root;Password=root;
     depends_on:
-      - db
+      - db:
+          condition: service_healthy
 
 volumes:
   db_data:

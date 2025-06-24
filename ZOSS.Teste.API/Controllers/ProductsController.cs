@@ -5,7 +5,7 @@ using ZOSS.Teste.Application.Interfaces;
 namespace ZOSS.Teste.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;

@@ -19,7 +19,7 @@ Funcionalidades implementadas:
 - ✅ CRUD completo de Produtos (Cadastrar, Listar, Atualizar, Remover)
 - ✅ Validações de entrada (DTOs)
 - ✅ Documentação interativa via Swagger
-- ✅ Orquestração via Docker Compose
+- ✅ Orquestração via Docker Compose com **healthcheck**
 - ✅ Pipeline CI/CD automatizado (build, testes e push da imagem Docker)
 
 ---
@@ -66,24 +66,54 @@ docker-compose up --build
 
 Este comando inicializa:
 - API .NET 9 rodando em `http://localhost:8080`
-- Banco de Dados MySQL rodando na porta `3306`
+- Banco de Dados MySQL rodando localmente na porta **3307** (internamente no container: 3306)
 
 ---
 
-### 3️⃣ Testar Endpoints
+### 3️⃣ Configuração Avançada (`docker-compose.yml`)
+
+O arquivo `docker-compose.yml` está configurado com:
+- **`depends_on` com `condition: service_healthy`** — garante que a API só sobe após o MySQL estar saudável.
+- **`healthcheck` no MySQL** — ping automático para evitar erro de conexão na inicialização.
+- **Volume persistente** — dados do banco persistem mesmo após reinício dos containers.
+
+---
+
+### 4️⃣ Testar Endpoints
 
 Acesse a documentação Swagger em:
 ```
 http://localhost:8080/swagger
 ```
 
-Principais endpoints:
-- `POST /category` → Cadastrar Categoria
-- `GET /categories` → Listar Categorias
-- `POST /product` → Cadastrar Produto
-- `GET /products` → Listar Produtos
-- `PUT /product/{id}` → Atualizar Produto
-- `DELETE /product/{id}` → Remover Produto
+Principais endpoints (exemplos com versionamento `api/v1`):
+- `POST /api/v1/categories` → Cadastrar Categoria
+- `GET /api/v1/categories` → Listar Categorias
+- `POST /api/v1/products` → Cadastrar Produto
+- `GET /api/v1/products` → Listar Produtos
+- `PUT /api/v1/products/{id}` → Atualizar Produto
+- `DELETE /api/v1/products/{id}` → Remover Produto
+
+---
+
+### 5️⃣ Exemplos de Requisição `curl`
+
+**Cadastrar Categoria**
+```bash
+curl -X POST http://localhost:8080/api/v1/categories -H "Content-Type: application/json" -d '{
+  "name": "Eletrônicos"
+}'
+```
+
+**Cadastrar Produto**
+```bash
+curl -X POST http://localhost:8080/api/v1/products -H "Content-Type: application/json" -d '{
+  "name": "Notebook",
+  "description": "Notebook Gamer",
+  "value": 4500,
+  "categoryId": 1
+}'
+```
 
 ---
 
@@ -103,7 +133,7 @@ Este repositório possui pipeline **CI/CD** configurado com **GitHub Actions**, 
 - Validações claras via DTOs
 - Separação de DTOs para **Request** e **Response**
 - Versionamento de banco com **Migrations EF Core**
-- **Docker Compose** para ambiente isolado
+- **Docker Compose** com `depends_on` e `healthcheck` para ambiente robusto
 - **GitHub Actions** para pipeline CI/CD robusto e automatizado
 
 ---
