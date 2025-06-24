@@ -69,7 +69,7 @@ Este comando inicializa:
 
 Acesse a documentação Swagger em:
 ```
-http://localhost:5000/swagger
+http://localhost:8080/swagger
 ```
 
 Principais endpoints:
