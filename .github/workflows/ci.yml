@@ -23,15 +23,16 @@ jobs:
 
       # Restaurar dependências
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ZOSS.Teste.API/ZOSS.Teste.API.csproj
 
       # Build do projeto
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build ZOSS.Teste.API/ZOSS.Teste.API.csproj --no-restore
 
       # Rodar testes
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test ZOSS.Teste.API/ZOSS.Teste.API.csproj --no-build --verbosity normal
+
 
   docker-build-push:
     runs-on: ubuntu-latest
