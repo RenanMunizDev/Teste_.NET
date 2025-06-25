@@ -29,8 +29,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=db;Port=3306;Database=zoss_test;User Id=root;Password=root;
     depends_on:
-      - db:
-          condition: service_healthy
+      db:
+        condition: service_healthy
 
 volumes:
   db_data:
